@@ -1,0 +1,14 @@
+create database college_management;
+
+use college_management;
+
+create table registeration(registerNo int auto_increment
+primary key,name varchar(255),dateofBirth date,dept 
+varchar(255),emailid varchar(255),
+phoneNo bigint(13),bloodGroup varchar(14));
+
+create table payment(billNo int auto_increment primary 
+key, dateofPayment date,description varchar(255),
+amount int,collectedBy varchar(255),registerNo int,
+constraint constr_regi foreign key(registerNo)
+references registeration(registerNo));
