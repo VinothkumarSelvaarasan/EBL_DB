@@ -12,3 +12,13 @@ key, dateofPayment date,description varchar(255),
 amount int,collectedBy varchar(255),registerNo int,
 constraint constr_regi foreign key(registerNo)
 references registeration(registerNo));
+
+insert into registeration(name,dateofBirth,dept,emailid,
+phoneNo,bloodGroup) values("Rohan",'2001-02-18',"CSE",
+"rohan@gmail.com",838383883,"B+ve");
+
+
+select * from registeration;
+select name,dateofBirth,dept from registeration;
+
+select name,dateofBirth,dept from registeration where name="manoj";
