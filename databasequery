@@ -22,3 +22,67 @@ select * from registeration;
 select name,dateofBirth,dept from registeration;
 
 select name,dateofBirth,dept from registeration where name="manoj";
+
+insert into payment(dateofPayment,description,
+amount,collectedBy,registerNo) values
+('2024-06-21',"Semester 1",50000,"Krishnamoorthy",1),
+('2024-06-20',"Semester 1",50000,"Krishnamoorthy",2);
+
+***************************Join Two Tables********************************
+select r.name,r.dept,r.phoneNo,r.emailid,pay.billNo,
+pay.dateofPayment,
+pay.description,pay.amount,pay.collectedBy from registeration r join 
+payment pay on r.registerNo=pay.registerNo;
+****************************************************
+alter table payment drop collectedBy;
+********************************Create Another Table***********************
+create table staff(staffId int auto_increment primary key,
+staffName varchar(255),department varchar(255),
+jobRole varchar(255),dateofJoin date);
+********************Add StaffId Column and  Alter the table by add Constraint********************
+
+alter table payment add staffId int after billNo;
+
+alter table payment add constraint const_staffId 
+foreign key(staffId) references staff(staffId);
+
+****************Insert data in payment table************************************
+insert into payment(dateofPayment,description,
+amount,collectedBy,registerNo) values
+('2024-06-21',"Semester 1",50000,"Krishnamoorthy",1),
+('2024-06-20',"Semester 1",50000,"Krishnamoorthy",2);
+
+*****************Insert into Staff Table*****************
+insert into staff
+(staffName,department,jobRole,dateofJoin)
+values("Krishnamoorthy","Admin","Cashier",'1995-03-16'),
+("Latha","Computer","Assitant Professor",'1995-03-16');
+******************Update *****************
+update payment set staffId=1 where billNo in(1,2);
+*******************************Joining Three Tables with out Conditions*****************
+select r.name,r.dateofBirth,r.dept,r.emailid,r.phoneNo,
+pay.billNo,pay.dateofPayment,pay.description,pay.amount,
+st.staffName,
+st.department,st.jobRole from
+ registeration r join payment pay 
+ on r.registerNo=pay.registerNo join staff st on
+pay.staffId=st.staffId;
+*******************************Joining Three Tables with  Conditions*****************
+
+select r.name,r.dateofBirth,r.dept,r.emailid,r.phoneNo,
+pay.billNo,pay.dateofPayment,pay.description,pay.amount,
+st.staffName,
+st.department,st.jobRole from
+ registeration r join payment pay 
+ on r.registerNo=pay.registerNo join staff st on
+pay.staffId=st.staffId where pay.dateofPayment='2024-06-21'
+
+
+
+
+
+
+
+
+
+
