@@ -76,8 +76,22 @@ st.department,st.jobRole from
  registeration r join payment pay 
  on r.registerNo=pay.registerNo join staff st on
 pay.staffId=st.staffId where pay.dateofPayment='2024-06-21'
+*******************************Order By***********************
+select name,dateofBirth,dept from registeration order by name desc;
+*************Not between******************
 
 
+select * from college_management.registeration
+ where dateofBirth not between '2001-02-18' AND '2001-03-18'
+**************************Group by and OrderBy and Having ***********************
+
+select name,dateofBirth,dept from registeration order by name desc;
+select dept,count(dept) as total from registeration group by dept having total=2;
+select dept,count(dept) as total from registeration group by dept ;
+insert into registeration(name,dateofBirth,dept,emailid,
+phoneNo,bloodGroup) values("Zaindueen",'2001-03-18',"Mech",
+"zaindueen@gmail.com",3434343,"B+ve"),("Ravi",'2001-04-19',"ECE",
+"Ravi@gmail.com",3434343,"B+ve");
 
 
 
